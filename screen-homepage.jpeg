@@ -1,0 +1,48 @@
+# Journally Landing Page
+
+Standalone static landing page for Journally. It is intentionally separate from the Spring/Expo app and can be deployed directly to Netlify.
+
+The contact form opens a pre-filled email to `service.journally@gmail.com`.
+
+## Local Preview
+
+From this folder:
+
+```powershell
+python -m http.server 4173 --bind 127.0.0.1
+```
+
+Open:
+
+```text
+http://127.0.0.1:4173/
+```
+
+## Netlify Deploy
+
+### Manual deploy
+
+1. Go to Netlify.
+2. Open **Sites**.
+3. Choose **Add new site**.
+4. Choose **Deploy manually**.
+5. Drag the `landing` folder into Netlify.
+
+### CLI deploy
+
+From this folder:
+
+```powershell
+netlify login
+netlify deploy --dir . --prod
+```
+
+If `netlify` is not installed:
+
+```powershell
+npm install -g netlify-cli
+```
+
+## Git Deploy Note
+
+The parent repository currently ignores `exportToHTML/`, so this folder will not be picked up by a Git-connected Netlify site unless the landing page is moved to a tracked folder or the parent `.gitignore` is adjusted.

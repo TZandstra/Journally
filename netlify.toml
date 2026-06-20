@@ -1,0 +1,339 @@
+﻿<!doctype html>
+<html lang="nl">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Journally | Reflectiesteun voordat zorg begint</title>
+    <meta
+      name="description"
+      content="Journally helpt clienten reflecteren terwijl zij wachten op mentale zorg en geeft psychologen clientgestuurde context voor het eerste gesprek."
+    />
+    <meta property="og:title" content="Journally | Reflectiesteun voordat zorg begint" />
+    <meta
+      property="og:description"
+      content="Een rustige, privacygerichte reflectieomgeving voor clienten die wachten op mentale zorg en de psychologen die hen begeleiden."
+    />
+    <meta property="og:type" content="website" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+    <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+    <script>
+      if (window.netlifyIdentity) {
+        window.netlifyIdentity.on("init", function (user) {
+          if (!user) {
+            window.netlifyIdentity.on("login", function () {
+              document.location.href = "/admin/";
+            });
+          }
+        });
+      }
+    </script>
+  </head>
+  <body>
+    <header class="site-header" data-reveal>
+      <a class="brand" href="#top" aria-label="Journally home">
+        <img class="brand-logo" src="/journally-logo.png" alt="Journally" />
+      </a>
+      <nav class="nav-links" aria-label="Primaire navigatie">
+        <a href="#product" data-i18n="nav.product">Product</a>
+        <a href="#psychologists" data-i18n="nav.psychologists">Voor psychologen</a>
+        <a href="#prototype" data-i18n="nav.prototype">Prototype</a>
+        <a href="#contact" data-i18n="nav.contact">Contact</a>
+        <a href="blog.html">Blog</a>
+      </nav>
+      <div class="header-actions">
+        <button class="language-toggle" type="button" data-language-toggle aria-label="Switch to English">EN</button>
+        <a class="nav-cta" href="#contact" data-i18n="nav.cta">Contact</a>
+      </div>
+    </header>
+
+    <main id="top">
+      <section class="hero" aria-labelledby="hero-title">
+        <div class="hero-scene" aria-hidden="true">
+          <div class="phone phone-home" data-depth="1.15">
+            <img src="/screen-homepage.jpeg" alt="" />
+          </div>
+          <div class="phone phone-guided" data-depth="0.8">
+            <img src="/screen-guided-entry.png" alt="" />
+          </div>
+          <div class="phone phone-insights" data-depth="0.65">
+            <img src="/screen-insights.png" alt="" />
+          </div>
+          <div class="context-panel" data-depth="0.45">
+            <span data-i18n="hero.panelLabel">Clientgestuurde context</span>
+            <strong data-i18n="hero.panelValue">7 reflecties</strong>
+            <small data-i18n="hero.panelSmall">Klaar voor intake-review</small>
+          </div>
+        </div>
+
+        <div class="hero-content" data-reveal>
+          <p class="eyebrow" data-i18n="hero.eyebrow">Voor lokale inhouse psychologen</p>
+          <h1 id="hero-title">Journally</h1>
+          <p class="hero-lede" data-i18n="hero.lede">
+            Een rustige reflectieomgeving die clienten helpt hun gedachten te ordenen terwijl ze wachten op mentale
+            zorg, zodat zij met heldere context het eerste gesprek in kunnen.
+          </p>
+          <div class="hero-actions" aria-label="Primaire acties">
+            <a class="button button-primary" href="#contact" data-i18n="hero.primary">Contact opnemen</a>
+            <a class="button button-secondary" href="#prototype" data-i18n="hero.secondary">Bekijk prototype</a>
+          </div>
+          <div class="hero-proof" aria-label="Product highlights">
+            <span data-i18n="hero.proofOne">Privacy als standaard</span>
+            <span data-i18n="hero.proofTwo">Begeleide reflectie</span>
+            <span data-i18n="hero.proofThree">Context voor de intake</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="intro-band" aria-label="Bedrijfssamenvatting" data-reveal>
+        <div class="section-inner intro-grid">
+          <p class="section-kicker" data-i18n="intro.kicker">Wat Journally doet</p>
+          <h2 data-i18n="intro.title">Journally maakt van wachttijd een rustige voorbereidingsruimte.</h2>
+          <p data-i18n="intro.body">
+            Clienten leggen stemming, gedachten, spraaknotities, foto-context en begeleide antwoorden vast in hun eigen
+            ritme. Psychologen krijgen alleen gedeelde context wanneer de client daarvoor kiest.
+          </p>
+        </div>
+      </section>
+
+      <section id="product" class="section product-section" aria-labelledby="product-title">
+        <div class="section-inner">
+          <div class="section-heading" data-reveal>
+            <p class="section-kicker" data-i18n="product.kicker">Productflow</p>
+            <h2 id="product-title" data-i18n="product.title">
+              Van ongestructureerd wachten naar een gerichter eerste gesprek.
+            </h2>
+          </div>
+
+          <div class="flow-layout">
+            <div class="flow-tabs" role="tablist" aria-label="Journally productflow" data-reveal>
+              <button class="flow-tab active" type="button" role="tab" aria-selected="true" data-screen="homepage">
+                <span>01</span>
+                <strong data-screen-label>Homepage</strong>
+              </button>
+              <button class="flow-tab" type="button" role="tab" aria-selected="false" data-screen="guided">
+                <span>02</span>
+                <strong data-screen-label>Begeleide invoer</strong>
+              </button>
+              <button class="flow-tab" type="button" role="tab" aria-selected="false" data-screen="insights">
+                <span>03</span>
+                <strong data-screen-label>Inzichten</strong>
+              </button>
+              <button class="flow-tab" type="button" role="tab" aria-selected="false" data-screen="companions">
+                <span>04</span>
+                <strong data-screen-label>Companions</strong>
+              </button>
+            </div>
+
+            <div class="prototype-view" data-reveal>
+              <div class="device-frame">
+                <img
+                  id="prototype-screen"
+                  src="/screen-homepage.jpeg"
+                  alt="Journally homepage scherm"
+                />
+              </div>
+              <div class="screen-copy" aria-live="polite">
+                <p id="screen-label">Homepage</p>
+                <h3 id="screen-title">Een zachte start voor de dag.</h3>
+                <span id="screen-body">
+                  De homepage bundelt stemming, sync-status, weekactiviteit en de laatste reflectie in een rustige
+                  eerste laag.
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="psychologists" class="section psychologist-section" aria-labelledby="psychologists-title">
+        <div class="section-inner">
+          <div class="section-heading compact" data-reveal>
+            <p class="section-kicker" data-i18n="psych.kicker">Voor psychologen</p>
+            <h2 id="psychologists-title" data-i18n="psych.title">Een soepelere overgang naar het eerste gesprek.</h2>
+            <p data-i18n="psych.body">
+              Journally is ontworpen voor lokale inhouse psychologieteams die meer context willen voor de intake,
+              zonder dat de tool monitoring, diagnose of extra administratieve druk wordt.
+            </p>
+          </div>
+
+          <div class="value-grid">
+            <article class="value-card accent-orange" data-reveal>
+              <span class="value-index">01</span>
+              <h3 data-i18n="value.oneTitle">Clienten komen minder blanco binnen.</h3>
+              <p data-i18n="value.oneBody">
+                Vragen en prompts helpen clienten gevoelens, thema's en gebeurtenissen alvast te verzamelen.
+              </p>
+            </article>
+            <article class="value-card accent-green" data-reveal>
+              <span class="value-index">02</span>
+              <h3 data-i18n="value.twoTitle">Context blijft clientgestuurd.</h3>
+              <p data-i18n="value.twoBody">
+                Reflecties blijven prive, tenzij een client bewust kiest voor delen of exporteren.
+              </p>
+            </article>
+            <article class="value-card accent-blue" data-reveal>
+              <span class="value-index">03</span>
+              <h3 data-i18n="value.threeTitle">Patronen zijn sneller te scannen.</h3>
+              <p data-i18n="value.threeBody">
+                Stemming, focusgebieden en begeleide antwoorden helpen betere eerste vragen te stellen.
+              </p>
+            </article>
+            <article class="value-card accent-pink" data-reveal>
+              <span class="value-index">04</span>
+              <h3 data-i18n="value.fourTitle">De veiligheidspositie is expliciet.</h3>
+              <p data-i18n="value.fourBody">
+                Journally is voorbereiding op zorg, geen crisisbewaking, diagnose of vervanging van behandeling.
+              </p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section context-section" aria-labelledby="context-title">
+        <div class="section-inner context-grid">
+          <div class="context-copy" data-reveal>
+            <p class="section-kicker" data-i18n="context.kicker">Interactieve zorgcontext</p>
+            <h2 id="context-title" data-i18n="context.title">
+              Een client bouwt langzaam een beeld op, niet pas vlak voor de intake.
+            </h2>
+            <p data-i18n="context.body">
+              Journally maakt zichtbaar wat mogelijk relevant is: stemming door de week, terugkerende thema's,
+              reflectievragen en de eigen woorden van de client.
+            </p>
+          </div>
+
+          <div class="context-visual" data-reveal aria-label="Voorbeeld van wekelijkse contextvisualisatie">
+            <div class="mood-chart" aria-hidden="true">
+              <span style="--level: 48%"></span>
+              <span style="--level: 64%"></span>
+              <span style="--level: 42%"></span>
+              <span style="--level: 72%"></span>
+              <span style="--level: 58%"></span>
+              <span style="--level: 80%"></span>
+              <span style="--level: 68%"></span>
+            </div>
+            <div class="topic-row">
+              <span data-i18n="context.topicOne">Slaap</span>
+              <span data-i18n="context.topicTwo">Familie</span>
+              <span data-i18n="context.topicThree">Werk</span>
+            </div>
+            <div class="reflection-note">
+              <strong data-i18n="context.noteTitle">Context voor de behandelaar</strong>
+              <p data-i18n="context.noteBody">
+                Client merkt stress voor werkdagen op en wil slaap en routine bespreken.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="prototype" class="section prototype-section" aria-labelledby="prototype-title">
+        <div class="section-inner media-layout">
+          <div class="media-copy" data-reveal>
+            <p class="section-kicker" data-i18n="prototype.kicker">Huidig prototype</p>
+            <h2 id="prototype-title" data-i18n="prototype.title">
+              Een rustige mobiele ervaring, al gevormd rond reflectie.
+            </h2>
+            <p data-i18n="prototype.body">
+              Het prototype bevat een begeleide composer, companion-kleuren, reflectievragen, inzichtkaarten,
+              visuele herinneringen, archiefweergaven en profielinzichten.
+            </p>
+            <a class="text-link" href="#contact" data-i18n="prototype.link">Bespreek een lokale pilot</a>
+          </div>
+
+          <div class="video-shell" data-reveal>
+            <video
+              controls
+              muted
+              playsinline
+              preload="metadata"
+              poster="/screen-homepage.jpeg"
+              aria-label="Journally huidig prototype video"
+            >
+              <source src="/journally-prototype.mp4" type="video/mp4" />
+            </video>
+          </div>
+        </div>
+      </section>
+
+      <section class="section safety-section" aria-labelledby="safety-title">
+        <div class="section-inner safety-layout">
+          <div data-reveal>
+            <p class="section-kicker" data-i18n="safety.kicker">Veiligheidspositie</p>
+            <h2 id="safety-title" data-i18n="safety.title">Gebouwd als voorbereiding, niet als behandeling.</h2>
+          </div>
+          <div class="safety-list" data-reveal>
+            <p data-i18n="safety.one">
+              Journally heeft privacy als standaard en claimt niet clienten te monitoren, diagnoses te stellen of
+              professionele zorg te vervangen.
+            </p>
+            <p data-i18n="safety.two">
+              De pilotdocumentatie benadrukt toestemming, terugtrekking, klinische review, melding van schadelijke
+              antwoorden en heldere crisisinformatie.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section id="contact" class="section contact-section" aria-labelledby="contact-title">
+        <div class="section-inner contact-layout">
+          <div class="contact-copy" data-reveal>
+            <p class="section-kicker" data-i18n="contact.kicker">Contact</p>
+            <h2 id="contact-title" data-i18n="contact.title">Start een gesprek over Journally in jouw zorgcontext.</h2>
+            <p data-i18n="contact.body">
+              Vertel kort over je team, intakeproces of wachtlijstcontext. Het formulier opent een e-mail naar
+              service.journally@gmail.com met je bericht.
+            </p>
+          </div>
+
+          <form
+            class="contact-form"
+            data-contact-form
+            action="mailto:service.journally@gmail.com"
+            method="post"
+            enctype="text/plain"
+            data-reveal
+          >
+            <label>
+              <span data-i18n="form.name">Naam</span>
+              <input name="name" type="text" autocomplete="name" required />
+            </label>
+            <label>
+              <span data-i18n="form.email">Werkmail</span>
+              <input name="email" type="email" autocomplete="email" required />
+            </label>
+            <label>
+              <span data-i18n="form.organisation">Organisatie</span>
+              <input name="organisation" type="text" autocomplete="organization" />
+            </label>
+            <label>
+              <span data-i18n="form.message">Wat moeten we weten?</span>
+              <textarea name="message" rows="5" required></textarea>
+            </label>
+            <button class="button button-primary form-submit" type="submit" data-i18n="form.submit">
+              E-mail opstellen
+            </button>
+            <a class="direct-mail" href="mailto:service.journally@gmail.com">service.journally@gmail.com</a>
+          </form>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="section-inner footer-inner">
+        <a class="brand small" href="#top" aria-label="Journally home">
+          <img class="brand-logo" src="/journally-logo.png" alt="Journally" />
+        </a>
+        <p data-i18n="footer.text">Reflectiesteun voordat zorg begint.</p>
+      </div>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>

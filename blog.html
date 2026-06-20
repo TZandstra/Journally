@@ -1,0 +1,244 @@
+<!doctype html>
+<html lang="nl">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Blog | Journally</title>
+    <meta name="description" content="Updates, reflections and articles from Journally." />
+    <meta property="og:title" content="Blog | Journally" />
+    <meta property="og:description" content="Updates, reflections and articles from Journally." />
+    <meta property="og:type" content="website" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+    <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+    <script>
+      if (window.netlifyIdentity) {
+        window.netlifyIdentity.on("init", function (user) {
+          if (!user) {
+            window.netlifyIdentity.on("login", function () {
+              document.location.href = "/admin/";
+            });
+          }
+        });
+      }
+    </script>
+    <style>
+      .blog-page {
+        min-height: 100svh;
+        padding-top: 120px;
+        background: var(--ivory);
+      }
+
+      .blog-list {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 18px;
+      }
+
+      .blog-card {
+        overflow: hidden;
+        border: 1px solid var(--line);
+        border-radius: 24px;
+        background: var(--surface);
+        box-shadow: 0 10px 30px rgba(46, 13, 3, 0.05);
+      }
+
+      .blog-card img {
+        width: 100%;
+        aspect-ratio: 16 / 10;
+        object-fit: cover;
+      }
+
+      .blog-card-content {
+        padding: 22px;
+      }
+
+      .blog-meta {
+        margin-bottom: 10px;
+        color: var(--muted);
+        font-size: 0.84rem;
+        font-weight: 700;
+      }
+
+      .blog-card h2 {
+        margin-bottom: 10px;
+        font-size: 1.45rem;
+        line-height: 1.18;
+      }
+
+      .blog-card p {
+        color: var(--muted);
+      }
+
+      .blog-status {
+        color: var(--muted);
+        font-weight: 700;
+      }
+
+      @media (max-width: 920px) {
+        .blog-list {
+          grid-template-columns: repeat(2, 1fr);
+        }
+      }
+
+      @media (max-width: 620px) {
+        .blog-page {
+          padding-top: 150px;
+        }
+
+        .blog-list {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="brand" href="index.html" aria-label="Journally home">
+        <img class="brand-logo" src="journally-logo.png" alt="Journally" />
+      </a>
+      <nav class="nav-links" aria-label="Primaire navigatie">
+        <a href="index.html#product">Product</a>
+        <a href="index.html#psychologists">Voor psychologen</a>
+        <a href="index.html#prototype">Prototype</a>
+        <a href="index.html#contact">Contact</a>
+        <a href="blog.html" aria-current="page">Blog</a>
+      </nav>
+    </header>
+
+    <main class="blog-page">
+      <section class="section">
+        <div class="section-inner">
+          <div class="section-heading">
+            <p class="section-kicker">Blog</p>
+            <h1>Journally blog</h1>
+            <p>Updates, reflections and articles from the Journally team.</p>
+          </div>
+          <div id="blog-list" class="blog-list" aria-live="polite">
+            <p class="blog-status">Loading blog posts...</p>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <script>
+      const GITHUB_USERNAME = "GITHUB_USERNAME";
+      const GITHUB_REPO_NAME = "GITHUB_REPO_NAME";
+      const BLOG_FOLDER = "content/blog";
+      const blogList = document.querySelector("#blog-list");
+
+      function parseFrontMatter(markdown) {
+        const match = markdown.match(/^---\s*([\s\S]*?)\s*---\s*([\s\S]*)$/);
+        const data = {};
+        const body = match ? match[2].trim() : markdown.trim();
+        const frontMatter = match ? match[1] : "";
+
+        frontMatter.split("\n").forEach(function (line) {
+          const separatorIndex = line.indexOf(":");
+          if (separatorIndex === -1) return;
+          const key = line.slice(0, separatorIndex).trim();
+          const value = line
+            .slice(separatorIndex + 1)
+            .trim()
+            .replace(/^["']|["']$/g, "");
+          data[key] = value;
+        });
+
+        return { data: data, body: body };
+      }
+
+      function createExcerpt(markdown) {
+        return markdown
+          .replace(/[#>*_`[\]()]/g, "")
+          .replace(/\s+/g, " ")
+          .trim()
+          .slice(0, 150);
+      }
+
+      function formatDate(value) {
+        const date = new Date(value);
+        if (Number.isNaN(date.getTime())) return value || "";
+        return date.toLocaleDateString("en", {
+          year: "numeric",
+          month: "long",
+          day: "numeric"
+        });
+      }
+
+      function cardTemplate(post) {
+        const thumbnail = post.data.thumbnail || "public/images/welcome-thumbnail.jpeg";
+        const title = post.data.title || "Untitled post";
+        const author = post.data.author || "Journally Team";
+        const date = formatDate(post.data.date);
+        const excerpt = createExcerpt(post.body);
+        const postUrl = "post.html?post=" + encodeURIComponent(post.fileName);
+
+        return `
+          <article class="blog-card">
+            <img src="${thumbnail}" alt="" />
+            <div class="blog-card-content">
+              <p class="blog-meta">${author}${date ? " · " + date : ""}</p>
+              <h2>${title}</h2>
+              <p>${excerpt}</p>
+              <a class="button button-primary" href="${postUrl}">Read More</a>
+            </div>
+          </article>
+        `;
+      }
+
+      async function fetchPostsFromGitHub() {
+        if (GITHUB_USERNAME === "GITHUB_USERNAME" || GITHUB_REPO_NAME === "GITHUB_REPO_NAME") {
+          throw new Error("Add your GitHub username and repository name in blog.html.");
+        }
+
+        const apiUrl = `https://api.github.com/repos/${GITHUB_USERNAME}/${GITHUB_REPO_NAME}/contents/${BLOG_FOLDER}`;
+        const response = await fetch(apiUrl);
+        if (!response.ok) throw new Error("Could not load blog posts from GitHub.");
+        const files = await response.json();
+        const markdownFiles = files.filter(function (file) {
+          return file.name.endsWith(".md") && file.download_url;
+        });
+
+        const posts = await Promise.all(
+          markdownFiles.map(async function (file) {
+            const markdownResponse = await fetch(file.download_url);
+            const markdown = await markdownResponse.text();
+            return { fileName: file.name, ...parseFrontMatter(markdown) };
+          })
+        );
+
+        return posts.sort(function (a, b) {
+          return new Date(b.data.date) - new Date(a.data.date);
+        });
+      }
+
+      async function loadPosts() {
+        try {
+          const posts = await fetchPostsFromGitHub();
+          blogList.innerHTML = posts.length
+            ? posts.map(cardTemplate).join("")
+            : '<p class="blog-status">No blog posts found yet.</p>';
+        } catch (error) {
+          blogList.innerHTML = `
+            <article class="blog-card">
+              <img src="public/images/welcome-thumbnail.jpeg" alt="" />
+              <div class="blog-card-content">
+                <p class="blog-meta">Journally Team · June 20, 2026</p>
+                <h2>Welcome to the Journally blog</h2>
+                <p>Welcome to the Journally blog, where we will share updates, reflections, and articles from the team.</p>
+                <a class="button button-primary" href="post.html?post=welcome.md">Read More</a>
+              </div>
+            </article>
+          `;
+        }
+      }
+
+      loadPosts();
+    </script>
+  </body>
+</html>
